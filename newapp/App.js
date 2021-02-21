@@ -29,13 +29,13 @@ import TopRated from './screens/TopRated/TopRated';
 import UpComing from './screens/Upcoming/UpComing';
 import {createAppContainer} from 'react-navigation';
 import {createMaterialBottomTabNavigator} from 'react-navigation-material-bottom-tabs';
-//import Navigator from './navigation/Navigation';
+import Navigator from './navigation/Navigation';
 
 class App extends React.Component {
   render() {
     return (
       <View style = {{flex:1, ustifyContent:'center', alignItems:'center'}}>
-        
+        <Navigator/>
         
       </View>
     );

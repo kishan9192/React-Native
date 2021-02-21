@@ -2,47 +2,7 @@ import React, { Component } from 'react';
 import { Text, View, StyleSheet, Image, TouchableOpacity, ScrollView } from 'react-native';
 import { FlatList, ActivityIndicator, } from 'react-native';
 import Details from '../../components/details'
-
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#223343'
-  },
-  results: {
-    flex: 1,
-  },
-  result: {
-    flex: 1,
-    width: '100%',
-    marginBottom: 50
-  },
-  heading: {
-    color: 'white',
-    fontSize: 20,
-    fontWeight: '700',
-    padding: 20,
-    backgroundColor: '#445565',
-    marginLeft: 20,
-    marginRight: 20,
-    textAlign: 'center'
-  },
-  body: {
-    backgroundColor: '#223343'
-  },
-  topview: {
-    fontSize: 30,
-    alignContent: 'center',
-    padding: 10,
-    textAlign: 'center',
-    backgroundColor: '#8C001A',
-    color: 'white',
-    marginBottom: 20
-  }
-});
-
+import { globalStyle } from '../../styles/globalStyle';
 
 
 class TopRated extends Component {
@@ -81,20 +41,19 @@ class TopRated extends Component {
   }
 
   render() {
-    //console.log("Inside popular", this.state.data);
     if (this.state.clicked) {
       return (
         <Details changeclicked={this.changeclicked.bind(this)} clickeddata={this.state.clickeddata} />
       )
     }
     return (
-      <View style={styles.body}>
-        <Text style={styles.topview}> Some TopRated Movies </Text>
+      <View style={globalStyle.body}>
+        <Text style={globalStyle.topview}>  Top Rated Movies </Text>
 
-        <ScrollView styles={styles.results}>
+        <ScrollView styles={globalStyle.results}>
           {this.state.data.map(item => (
             <TouchableOpacity onPress={() => this.showdetails(item)}>
-              <View key={item.id} style={styles.result}>
+              <View key={item.id} style={globalStyle.result}>
                 <Image
                   source={{ uri: this.baseuri + item.poster_path }}
                   style={{
@@ -106,7 +65,7 @@ class TopRated extends Component {
                   }}
                   resizeMode="cover"
                 />
-                <Text style={styles.heading}> {item.title} </Text>
+                <Text style={globalStyle.heading}> {item.title} </Text>
               </View>
             </TouchableOpacity>
           ))}
